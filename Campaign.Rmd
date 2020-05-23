@@ -1,7 +1,7 @@
 ---
 title: "Campaign Contribution"
 author: "Pouria Niknam"
-date: "5/9/2020"str
+date: "5/23/2020"
 output: pdf_document
 ---
 
@@ -21,7 +21,11 @@ campaign <- read_csv("C://Users//Pouria//OneDrive - UWGB//Documents//Campaign Co
 ```
 
 ```{r}
-kickstart$deadline <- as_datetime(kickstart$deadline)
+campaign$date <- as_datetime(campaign$date)
+campaign <- campaign %>%
+  mutate(date, contri_year = year(date))
+```
+```{r}
 kickstart$launched_at <- as_datetime(kickstart$launched_at)
 kickstart$state_changed_at <- as_datetime(kickstart$state_changed_at)
 
